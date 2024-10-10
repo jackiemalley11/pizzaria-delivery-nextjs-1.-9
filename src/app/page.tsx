@@ -3,10 +3,17 @@
 import {useState} from "react";
 import Banner from "@/components/Banner";
 import OrdersReport from "@/components/OrdersReport";
+import ClipLoader from "react-spinners/ClipLoader";
 
-import LoadingOverlay from "@/components/LoadingOverlay";
+
+// import LoadingOverlay from "@/components/LoadingOverlay";
 
 export default function Home() {
+
+  let message: string = "loading...";
+
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#b82308");
 
 
   //------------------------------------event handlers
@@ -52,7 +59,20 @@ export default function Home() {
       </aside>
 
       <div className="bg-greyAccent p-10 ">
-        <LoadingOverlay show={appState ==2 ? true : false} bgColor="#b82308"/>
+        {/* <LoadingOverlay show={appState ==2 ? true : false} bgColor="#b82308"/> */}
+    
+        <ClipLoader
+        color={color}
+        loading={appState ===2}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+        
+        />
+
+      <div className={`${appState==2 ? 'visible' : 'hidden'}`}>
+        Loading...
+      </div>
 
         <div id="output" className="divide-dashed divide-y-2 divide-accent">
 
