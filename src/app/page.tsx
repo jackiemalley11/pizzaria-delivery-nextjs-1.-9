@@ -10,6 +10,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Home() {
 
+
   let message: string = "loading...";
 
   let [loading, setLoading] = useState(true);
@@ -58,23 +59,22 @@ export default function Home() {
         </div>
       </aside>
 
-      <div className="bg-greyAccent p-10 ">
+      <div className="bg-greyAccent p-10">
         {/* <LoadingOverlay show={appState ==2 ? true : false} bgColor="#b82308"/> */}
-    
-        <ClipLoader
-        color={color}
-        loading={appState ===2}
-        size={150}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-        
-        />
+        {appState === 2 && (
+          <div className="flex items-center">
+            <span className="pr-10">Loading... </span>
+            <ClipLoader
+              color={color}
+              loading={true}  // Always true since we conditionally render this div
+              size={50}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          </div>
+        )}
 
-      <div className={`${appState==2 ? 'visible' : 'hidden'}`}>
-        Loading...
-      </div>
-
-        <div id="output" className="divide-dashed divide-y-2 divide-accent">
+        <div id="output" className=" divide-dashed divide-y-2 divide-accent">
 
           <OrdersReport setAppState={setAppState} appState={appState} />
 
