@@ -45,7 +45,9 @@ export default function Home() {
               <button 
                 className={`border-none rounded-md p-2.5 text-white mt-5 
                   ${appState === 2 ? 'bg-greyContent text-grey' : 'bg-accent hover:bg-greyContent'}`}
-                onClick={showOrders}>
+                  onClick={showOrders}
+                  disabled={appState ===2 }
+                >
                 Get Orders
                 
               </button>
